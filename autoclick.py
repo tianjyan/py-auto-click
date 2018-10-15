@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import time
 from logger import Logger
 
 __author__ = 'Tianjie Yang'
@@ -17,11 +18,19 @@ class AutoClick:
 
     def run(self):
         while True:
-            self.revisit(500, 500)
+            self.revisit(0, 500)
 
     def revisit(self, x, y):
         os.system(u'adb shell input tap {} {}'.format(x, y))
-        os.system(u'adb shell input tap {} {}'.format(100, 100))
+        time.sleep(3)
+        os.system(u'adb shell input tap {} {}'.format(1000, 1800))
+        time.sleep(3)
+        os.system(u'adb shell input tap {} {}'.format(420, 350))
+        os.system(u'adb shell input tap {} {}'.format(900, 1100))
+        os.system(u'adb shell input tap {} {}'.format(1020, 1150))
+        os.system(u'adb shell input tap {} {}'.format(1000, 1800))
+        os.system(u'adb shell input keyevent 4')
+        time.sleep(3)
 
 if __name__ == "__main__":
     logger = Logger()
