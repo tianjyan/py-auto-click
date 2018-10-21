@@ -4,18 +4,13 @@
 import os
 import sys
 import time
+from abcadb import ABCAdb
 from logger import Logger
 
 __author__ = 'Tianjie Yang'
 __email__ = "tianjyan@qq.com"
 
-class AutoClick:
-    logger = None
-    """
-    Usage: run method `run` will send events to connected android device.
-    """
-    def __init__(self, logger):
-        self.logger = logger
+class AutoClick(ABCAdb):
 
     def run(self):
         while True:
@@ -42,22 +37,8 @@ class AutoClick:
         self.goback()
          # 等待返回
         time.sleep(1)
-        
-    def tap(self, x, y):
-        os.system(u'adb shell input tap {} {}'.format(x, y))
-
-    def swipe(self, sourceX, sourceY, targetX, targetY):
-        os.system(u'adb shell input swipe {} {} {} {}'.format(sourceX, sourceY, targetX, targetY))    
-
-    def text(self, str):
-        os.system(u'adb shell am broadcast -a ADB_INPUT_B64 --es msg `echo \'{}\' | base64`'.format(str))
-
-    def goback(self):
-        os.system(u'adb shell input keyevent 4')
 
 if __name__ == "__main__":
-    reload(sys)
-    sys.setdefaultencoding( "utf-8" )
     logger = Logger()
     autoClick = AutoClick(logger)
     autoClick.run()
