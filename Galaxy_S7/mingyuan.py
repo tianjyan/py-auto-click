@@ -3,6 +3,7 @@
 
 import os
 import sys
+sys.path.append("..")
 import time
 from abcadb import ABCAdb
 from logger import Logger

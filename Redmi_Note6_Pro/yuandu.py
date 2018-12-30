@@ -3,6 +3,7 @@
 
 import os
 import sys
+sys.path.append("..")
 import time
 from abcadb import ABCAdb
 from logger import Logger
@@ -15,7 +16,7 @@ class AutoClick(ABCAdb):
     def run(self):
         while True:
             self.revisit(200, 715)
-            self.swipe(0, 1200, 0, 975)
+            self.swipe(0, 1200, 0, 968)
             time.sleep(2)
 
     def revisit(self, x, y):
@@ -30,7 +31,7 @@ class AutoClick(ABCAdb):
         # 输入回访文本
         self.text(u'考虑')
         # 确认回访内容
-        self.tap(300, 1150)
+        self.tap(300, 1240)
          # 等待对话框消失
         time.sleep(1)
         # 返回主页面
